@@ -8,11 +8,6 @@ class ApplicationController < ActionController::Base
       #User.find( session[:user_id]) unless session[:user_id].blank?
       #@c_user ||= User.find( session[:user_id]) unless session[:user_id].blank?
 
-       Signingup do
-        before do
-          ensure_on home_path
-          click_on 'Sign Up'
-
           if @c_user.present?
             return @c_user
           elsif session[:user_id].present?
@@ -22,8 +17,7 @@ class ApplicationController < ActionController::Base
             return nil
           end
         end
-      end
-    end
+
 
     #def User.create
     #  if let!(:user) { User.create{email{'harry@hogwarts.edu'}&& password} {('super_secret')}}

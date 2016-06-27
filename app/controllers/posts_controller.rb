@@ -17,6 +17,8 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+#unless current_user == @post.user
+
   # GET /posts/1/edit
   def edit
   end
@@ -25,11 +27,12 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.user = current_user
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: 'Post was successfully created.' }
-        format.json { render :show, status: :created, location: @post }
+        format.html { redirect_to user_posts_path(current_user), notice: 'Post was successfully created.' }
+        format.json { render :show, status: :created, location: user_posts_path(current_user) }
       else
         format.html { render :new }
         format.json { render json: @post.errors, status: :unprocessable_entity }
