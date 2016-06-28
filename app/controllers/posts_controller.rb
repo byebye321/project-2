@@ -23,7 +23,7 @@ class PostsController < ApplicationController
   # GET /posts/1/edit
   def edit
     unless current_user.id == @post.user.id
-      redirect_to home_page, notice: "hi"
+      redirect_to home_path, notice: "successfully updated"
     end
   end
 
