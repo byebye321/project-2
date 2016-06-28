@@ -18,22 +18,14 @@ class ApplicationController < ActionController::Base
           end
         end
 
-
-    #def User.create
-    #  if let!(:user) { User.create{email{'harry@hogwarts.edu'}&& password} {('super_secret')}}
-    #      redirect_to index_url
-    #    else
-    #    flash[:error] = "user name and password does not match"
-    #  end
-
     def user_logged_in?
       current_user.present?
     end
 
     def authenticate_user
       unless user_logged_in?
-        flash[:error] = "you must login first"
-        redirect_to login_url
+        flash[:error] = 'You must log in to access this page.'
+        redirect_to home_url
       end
     end
   end

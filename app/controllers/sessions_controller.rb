@@ -8,13 +8,13 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to home_path, notice: "Welcome"
     else
-      flash.now.alert = "Invalid Login Details"
+      flash.now.alert = "Couldn't sign you in. Please check your email and password."
       render "new"
   end
 end
 
   def destroy
-    session[:user_id] = nil
-    redirect_to home_path, notice: "Signed Out"
-  end
+      session[:user_id] = nil
+      redirect_to home_path, notice: "Signed Out"
+    end
 end

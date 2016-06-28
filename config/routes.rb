@@ -4,16 +4,16 @@ Rails.application.routes.draw do
 #  get 'session/create'
 
   #get 'session/destroy'
-  root 'home#index'
-  get 'home', to: 'posts#index', as: 'posts'
+  root 'posts#index', as: 'home'
+  # get 'home', to: 'posts#index', as: 'posts'
 
 
   get 'sign_in', to: 'sessions#new'
-  get 'signup', to: 'users#new'
+  get 'sign_up', to: 'users#new'
   delete 'sign_out', to: 'sessions#destroy'
   resources :sessions, only: [:create]
 
-  resources :comments
+  # resources :comments
 
   resources :users do
     resources :posts
